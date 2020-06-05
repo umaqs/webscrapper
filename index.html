@@ -9,7 +9,7 @@
 <body>
     <input id="input" type="text"/>
     <button id="submit" >Submit</button>
-    <pre id="result"></pre>
+    <pre id="result" hidden="true"></pre>
 </body>
 <script>
     // document.onload = () => {
@@ -17,7 +17,7 @@
         button.onclick = () => {
             let input = document.getElementById('input');
             let output =  document.getElementById("result");
-            output.innerText = '';
+            output.hidden = true;
             let url = input.value;
             $.ajax(url).then((data, status, xhr) => {
                 if(status.toLowerCase() === 'success') {
@@ -25,6 +25,7 @@
                 } else {
                     output.innerText = '';
                 }
+                output.hidden = false;
             });
         };
     // };
