@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insta Scraper</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <input id="input" type="text" value="https://www.instagram.com/p/CA9cS9hJJMy?__a=1"/>
+    <button id="submit" >Submit</button>
+    <pre id="result"></pre>
+</body>
+<script>
+    // document.onload = () => {
+        let button = document.getElementById("submit");
+        button.onclick = () => {
+            let input = document.getElementById('input');
+            let output =  document.getElementById("result");
+            output.innerText = '';
+            let url = input.value;
+            $.ajax(url).then((data, status, xhr) => {
+                if(status.toLowerCase() === 'success') {
+                    output.innerText = JSON.stringify(data);
+                } else {
+                    output.innerText = '';
+                }
+            });
+        };
+    // };
+</script>
+</html>
